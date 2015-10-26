@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+
+    <div class="page-header">
+        <h1>Simple Translator</h1>
+    </div>
+    <br>
+
+    <div class="">
+        <%= @translated.inspect %>
+    </div>
+
+
+        <%= bootstrap_form_for(Translation.new) do |f| %>
+            <%= f.select :language_from, @languages %>
+            <%= f.select :language_to, @languages %>
+            <%= f.text_area :body_text %>
+
+
+            <%= f.submit "Translate!" %>
+        <% end %>
+
+
+  </div>
+  <div class="col-sm-4"></div>
+</div>
