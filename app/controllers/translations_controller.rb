@@ -1,33 +1,43 @@
 class TranslationsController < ApplicationController
-  before_action :set_translation, only: :index
-
+  before_action :set_translation, only: [:show]
 
   def index
     @languages = Translation::POSSIBLE_LANGUAGES
-    byebug
+    @translations = Translation.all
   end
 
   def create
 
     @translation = Translation.new(translation_params)
+
+    if Translation.all.exists?(:body_text => @translation.body_text, :language_from => @translation.language_from)
+      found = Translation.find_by(body_text: @translation.body_text, language_from: @translation.language_from)
+      redirect_to found
+      return
+    end
+
     @translation.body_translation = Translation.translate(@translation)
 
     if @translation.save
       params['translation_id'] = @translation.id
-      redirect_to :root, notice: 'Translation successful'
+      redirect_to @translation
     else
-      print("fail")
+      redirect_to :root, :alert => 'ERROR!'
     end
   end
+
+  def show
+
+  end
+
+
 
   def translation_params()
     params.require(:translation).permit(:language_from, :language_to, :body_text)
   end
 
   def set_translation
-    if Translation.exists?(params['translation_id'])
-      @translated = Translation.all.find(params['translation_id'])
-    end
+    @translation = Translation.find(params[:id])
   end
 
   end

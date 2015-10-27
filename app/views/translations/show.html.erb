@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="row">
+
+  <div class="col-sm-4">
+    <%= link_to "Get back", :root, method: :get, class: "btn btn-primary" %>
+  </div>
+  <div class="col-sm-4">
+
+    <div class="page-header">
+      <h1><%= @translation.body_text %></h1>
+    </div>
+
+    <div class="well">
+      <%= @translation.language_from%> &nbsp; <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> &nbsp; <%= @translation.language_to %>
+      <br> <br>
+      Translation: &nbsp; <%= @translation.body_translation %>
+    </div>
+
+    <div class="well-sm">
+      Created: &nbsp; <%= @translation.created_at %>
+    </div>
+    </div>
+
+  <div class="col-sm-4"></div>
+
+    </div>
+</body>
+</html>

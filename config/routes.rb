@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   #   end
 
   root 'translations#index'
-
- # get '*path' => redirect('/')
   resources :translations
+  get '*path' => redirect('/')
+
 end

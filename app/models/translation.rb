@@ -2,7 +2,7 @@ class Translation < ActiveRecord::Base
 
   POSSIBLE_LANGUAGES = ['fi', 'en', 'sv']
 
-  validates :body_text, uniqueness: true
+  validates :body_text, uniqueness: true, presence: true
 
 
   def self.translate(request)
