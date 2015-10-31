@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+            <th>From</th>
+            <th>Body text</th>
+            <th>To</th>
+            <th>Translation</th>
+            <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+        <% @translations.each do |translation| %>
+            <tr>
+                <td><%= translation.language_from%></td>
+                <td><%= translation.body_text %></td>
+                <td><%= translation.language_to %></td>
+                <td><%= translation.body_translation%></td>
+                <td><%= link_to 'View', translation%></td>
+            </tr>
+        <% end %>
+      </tbody>
+
+
+    </table>
+
+
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
+</body>
+
+</html>

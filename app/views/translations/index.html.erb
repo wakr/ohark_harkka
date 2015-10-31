@@ -11,7 +11,7 @@
 
         <div class="panel panel-default">
           <p class="panel-body">
-            There are currently <b><%= link_to @translations.size %></b> translation(s).
+            There are currently <b><%= link_to @translations.size, controller: "translations", action: "all"  %></b> translation(s).
           </p>
         </div>
 

@@ -10,8 +10,8 @@ class TranslationsController < ApplicationController
 
     @translation = Translation.new(translation_params)
 
-    if Translation.all.exists?(:body_text => @translation.body_text, :language_from => @translation.language_from)
-      found = Translation.find_by(body_text: @translation.body_text, language_from: @translation.language_from)
+    if Translation.all.exists?(:body_text => @translation.body_text, :language_from => @translation.language_from, :language_to => @translation.language_to)
+      found = Translation.find_by(body_text: @translation.body_text, language_from: @translation.language_from, language_to: @translation.language_to)
       redirect_to found
       return
     end
@@ -30,9 +30,13 @@ class TranslationsController < ApplicationController
 
   end
 
+  def all
+    @translations = Translation.all
+  end
 
 
-  def translation_params()
+
+  def translation_params
     params.require(:translation).permit(:language_from, :language_to, :body_text)
   end
 
