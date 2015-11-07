@@ -56,8 +56,9 @@ Rails.application.routes.draw do
   #   end
 
   root 'translations#index'
-  resources :translations
+  resources :translations, only: [:show, :new, :create]
   get '/all' => 'translations#all'
+  get '/translations' => 'translations#all'
   get '*path' => redirect('/')
 
 end
